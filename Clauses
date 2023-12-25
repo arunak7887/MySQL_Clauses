@@ -1,0 +1,63 @@
+MySQL GROUP BY Clause:
+
+1}collect data from multiple records and group the result by one or more column. It is generally used in a SELECT statement.
+2}arrange identical data into groups with the help of some functions. i.e. if a particular column has the same values in different rows then it will arrange these rows in a group. 
+
+Features
+GROUP BY clause is used with the SELECT statement.
+In the query, the GROUP BY clause is placed after the WHERE clause.
+In the query, the GROUP BY clause is placed before the ORDER BY clause if used.
+In the query, the Group BY clause is placed before the Having clause.
+Place condition in the having clause.
+
+Explanation:
+
+function_name: Name of the function used for example, SUM() , AVG().
+table_name: Name of the table.
+condition: Condition used.
+
+
+Syntax:
+SELECT column_name(s)
+FROM table_name
+WHERE condition
+GROUP BY column_name(s)
+ORDER BY column_name(s);
+
+Example:
+create table:
+
+create table offixers (officer_id int ,officer_name varchar(30),addre
+ss int);
+
+mysql> insert into offixers values(1,"Ajeet",4111);
+Query OK, 1 row affected (0.12 sec)
+mysql> insert into offixers values(2,"Ajeet",4222);
+Query OK, 1 row affected (0.01 sec)
+mysql> insert into offixers values(3,"vimal",4222);
+Query OK, 1 row affected (0.01 sec)
+mysql> insert into offixers values(4,"Rahul",4666);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from offixers ;
++------------+--------------+---------+
+| officer_id | officer_name | address |
++------------+--------------+---------+
+|          1 | Ajeet        |    4111 |
+|          2 | Ajeet        |    4222 |
+|          3 | vimal        |    4222 |
+|          4 | Rahul        |    4666 |
++------------+--------------+---------+
+4 rows in set (0.00 sec)
+
+select address,count(*) from offixers group by address;
++---------+----------+
+| address | count(*) |
++---------+----------+
+|    4111 |        1 |
+|    4222 |        2 |
+|    4666 |        1 |
++---------+----------+
+3 rows in set (0.00 sec)
+
+
